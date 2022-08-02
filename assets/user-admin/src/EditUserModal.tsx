@@ -3,6 +3,7 @@ import { useForm, Resolver } from "react-hook-form";
 import './EditUserModal.css'
 import { User, useUpdateUserInfoMutation } from '../../graphql'
 import { Modal } from '../../shared/components/Modal'
+// comment
 
 type FormValues = {
   email: string,

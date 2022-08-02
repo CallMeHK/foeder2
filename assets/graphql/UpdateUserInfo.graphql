@@ -1,0 +1,13 @@
+mutation UpdateUserInfo($userId: ID!, $email: String, $confirmedAt: String, $password: String) {
+	updateUserInfo(userId: $userId, email: $email, confirmedAt: $confirmedAt, password: $password) {
+		id
+		email
+		confirmedAt
+		updatedAt
+		permissions {
+			id
+			permittedActions
+			updatedAt
+		}
+	}
+}

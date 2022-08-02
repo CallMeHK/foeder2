@@ -1,0 +1,15 @@
+query GetAllUsers {
+	  userPermissions,
+		users {
+			id
+			email
+			confirmedAt
+			updatedAt
+			insertedAt
+			permissions {
+				id
+				permittedActions
+				updatedAt
+			}
+		}
+}

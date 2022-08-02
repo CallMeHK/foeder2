@@ -1,0 +1,23 @@
+.edit-user-form {
+	padding: 16px;
+}
+
+.reset-password-tray {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.submit-button-tray {
+	display: flex;
+	flex-direction: row-reverse;
+	flex-wrap: wrap;
+	width: 100%
+}
+
+.submit-button-tray > button {
+	margin: 12px 12px 0;
+}
+
+.submit-button-tray > .cancel-button {
+	background-color: #a0a0cd;
+}

@@ -1,0 +1,6 @@
+mutation UpdateUserPermissions($userId: ID!, $canAdminUsers: Boolean, $isSuperAdmin: Boolean) {
+	updateUserPermissions(userId: $userId, canAdminUsers: $canAdminUsers, isSuperAdmin: $isSuperAdmin) {
+		id
+		permittedActions
+	}
+}

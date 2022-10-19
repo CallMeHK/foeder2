@@ -8,7 +8,10 @@
 import Config
 
 config :foeder,
-  ecto_repos: [Foeder.Repo]
+  ecto_repos: [Foeder.Repo, Foeder.Ash.Repo]
+
+config :foeder,
+  ash_apis: []
 
 # Configures the endpoint
 config :foeder, FoederWeb.Endpoint,

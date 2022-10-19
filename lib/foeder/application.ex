@@ -15,7 +15,9 @@ defmodule Foeder.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Foeder.PubSub},
       # Start the Endpoint (http/https)
-      FoederWeb.Endpoint
+      FoederWeb.Endpoint,
+      # Start ash framework
+      Foeder.Ash.Repo
       # Start a worker by calling: Foeder.Worker.start_link(arg)
       # {Foeder.Worker, arg}
     ]

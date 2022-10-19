@@ -1,6 +1,4 @@
 defmodule FoederWeb.Resolvers.Authz do
-  alias Foeder.Repo
-  alias Foeder.Accounts.User
 
   @user_permissions [:can_admin_users, :is_super_admin]
 

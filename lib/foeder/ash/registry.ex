@@ -6,6 +6,7 @@ defmodule Foeder.Ash.Entries do
     ]
 
   entries do
+    entry Foeder.Ash.User
     entry Foeder.Ash.Todos
   end
 end

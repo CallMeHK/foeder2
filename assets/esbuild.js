@@ -1,4 +1,10 @@
 const esbuild = require('esbuild')
+// app.css and app.js do not get moved into priv/static/assets when building
+
+// require('fs').writeFileSync(require('path').join(process.cwd(),'derp'), 'asdf')
+// cp ./assets/css/app.css ./priv/static/assets/
+// cp ./assets/js/app.js ./priv/static/assets/
+// cp ./assets/css/phonix.css ./priv/static/assets/
 
 // Decide which mode to proceed with
 let mode = 'build'

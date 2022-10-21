@@ -8,11 +8,15 @@ defmodule Foeder.Ash.Todos do
     repo Foeder.Ash.Repo
   end
 
+  # to update any value, pass a dict   entity |> Ash.Changeset.for_update(:update, %{high_priority: true}) |> Foeder.Ash.Registry.update()
+  # destroy: todo |> Ash.Changeset.for_destroy(:destroy) |> Foeder.Ash.Registry.destroy()
   code_interface do
     define_for Foeder.Ash.Registry
 
     define :todo, args: [:text, :user_id]
     define :user_todos, args: [:user_id]
+    define :done, args: []
+    define :destroy, args: []
   end
 
   actions do
@@ -29,6 +33,11 @@ defmodule Foeder.Ash.Todos do
 
     create :todo do
       accept [:text, :user_id]
+    end
+
+    update :done do
+      accept []
+      change set_attribute(:done, true)
     end
 
   end

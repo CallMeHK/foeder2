@@ -11,17 +11,24 @@ defmodule Foeder.Ash.Todos do
   code_interface do
     define_for Foeder.Ash.Registry
 
-    define :todo, args: [:text]
+    define :todo, args: [:text, :user_id]
+    define :user_todos, args: [:user_id]
   end
 
   actions do
     # Add a set of simple actions. You'll customize these later.
     defaults [:create, :read, :update, :destroy]
 
+    read :user_todos do
+      argument :user_id, :integer do
+        allow_nil? false
+      end
+
+      filter expr(user_id == ^arg(:user_id))
+    end
+
     create :todo do
-      accept [:text]
-
-
+      accept [:text, :user_id]
     end
 
   end
@@ -46,6 +53,12 @@ defmodule Foeder.Ash.Todos do
       allow_nil? true
     end
 
+    attribute :user_id, :integer do
+      allow_nil? false
+    end
+
+    create_timestamp :created_at
+    update_timestamp :updated_at
 
   end
 

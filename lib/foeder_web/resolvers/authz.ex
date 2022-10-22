@@ -39,7 +39,6 @@ defmodule FoederWeb.Resolvers.Authz do
                               :context, 
                               :current_user, 
                             ])
-      IO.inspect current_user
       if(current_user) do
         unquote(expr)
       else

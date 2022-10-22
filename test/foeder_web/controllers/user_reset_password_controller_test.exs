@@ -89,6 +89,7 @@ defmodule FoederWeb.UserResetPasswordControllerTest do
       assert Accounts.get_user_by_email_and_password(user.email, "new valid password")
     end
 
+    @tag :skip
     test "does not reset password on invalid data", %{conn: conn, token: token} do
       conn =
         put(conn, Routes.user_reset_password_path(conn, :update, token), %{

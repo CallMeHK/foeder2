@@ -5,7 +5,7 @@ defmodule Foeder.Ash.User do
 
   postgres do
     table "users"
-    repo Foeder.Ash.Repo
+    repo Foeder.Repo
   end
 
   code_interface do

@@ -5,7 +5,7 @@ defmodule Foeder.Ash.Todos do
 
   postgres do
     table "todo"
-    repo Foeder.Ash.Repo
+    repo Foeder.Repo
   end
 
   # to update any value, pass a dict   entity |> Ash.Changeset.for_update(:update, %{high_priority: true}) |> Foeder.Ash.update()

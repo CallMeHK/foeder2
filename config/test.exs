@@ -12,9 +12,23 @@ config :foeder, Foeder.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
-  database: "foeder_test#{System.get_env("MIX_TEST_PARTITION")}",
+  database: "foeder_dev",
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: 10
+
+config :foeder, Foeder.Ash.Repo,
+  username: "postgres",
+  password: "postgres",
+  hostname: "localhost",
+  database: "foeder_dev",
+  pool: Ecto.Adapters.SQL.Sandbox,
+  pool_size: 10
+
+config :foeder,
+  ash_apis: [Foeder.Ash]
+
+config :ash, :disable_async?, true
+
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.

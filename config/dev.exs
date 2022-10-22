@@ -20,7 +20,7 @@ config :foeder, Foeder.Ash.Repo,
   pool_size: 10
 
 config :foeder,
-  ash_apis: [Foeder.Ash.Registry]
+  ash_apis: [Foeder.Ash]
 
 
 # For development, we disable any cache and enable

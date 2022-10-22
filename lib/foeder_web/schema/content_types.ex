@@ -19,4 +19,13 @@ defmodule FoederWeb.Schema.ContentTypes do
     field :permitted_actions, list_of(:string)
     field :updated_at, :naive_datetime
   end
+
+  object :todo do
+    field :id, :id
+    field :text, :string
+    field :done, :boolean
+    field :high_priority, :boolean
+    field :updated_at, :naive_datetime
+    field :created_at, :naive_datetime
+  end
 end

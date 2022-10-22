@@ -43,10 +43,22 @@ defmodule FoederWeb.Resolvers.Users do
     end
   end
 
-  def list_user_permissions(parent_user, _args, resolution) do
+  def list_user_permissions(%{ id: user_id }, _args, resolution) do
     permission resolution, :can_admin_users do
       permissions = UserPermissions
-        |> where(user_id: ^parent_user.id)
+        |> where(user_id: ^user_id)
+        |> Repo.one()
+
+
+      {:ok, format_permissions_for_response(permissions)}
+    end
+  end
+
+  def list_user_permissions(_parent, _args, resolution) do
+    logged_in resolution do
+      current_user = get_user(resolution)
+      permissions = UserPermissions
+        |> where(user_id: ^current_user.id)
         |> Repo.one()
 
 

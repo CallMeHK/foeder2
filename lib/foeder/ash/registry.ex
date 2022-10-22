@@ -12,7 +12,7 @@ defmodule Foeder.Ash.Entries do
 end
 
 
-defmodule Foeder.Ash.Registry do
+defmodule Foeder.Ash do
   use Ash.Api
 
   resources do

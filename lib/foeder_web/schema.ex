@@ -12,6 +12,14 @@ defmodule FoederWeb.Schema do
     field :user_permissions, list_of(:string) do
       resolve &Resolvers.Authz.list_user_permissions/3
     end
+    @desc "Shows current users permissions"
+    field :permissions, :permissions do
+      resolve &Resolvers.Users.list_user_permissions/3
+    end
+    @desc "Gets all todos"
+    field :todos, list_of(:todo) do
+      resolve &Resolvers.Todos.get_user_todos/3
+    end
   end
 
   mutation do
@@ -32,6 +40,16 @@ defmodule FoederWeb.Schema do
       arg :password, :string
 
       resolve &Resolvers.Users.update_user_info/3
+    end
+
+    @desc "Update todo"
+    field :update_todo, :todo do
+      arg :id, non_null(:id)
+      arg :text, :string
+      arg :done, :boolean
+      arg :high_priority, :boolean
+
+      resolve &Resolvers.Todos.update_todo/3
     end
   end
 

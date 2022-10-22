@@ -8,20 +8,34 @@ defmodule Foeder.Ash.Todos do
     repo Foeder.Ash.Repo
   end
 
-  # to update any value, pass a dict   entity |> Ash.Changeset.for_update(:update, %{high_priority: true}) |> Foeder.Ash.Registry.update()
-  # destroy: todo |> Ash.Changeset.for_destroy(:destroy) |> Foeder.Ash.Registry.destroy()
+  # to update any value, pass a dict   entity |> Ash.Changeset.for_update(:update, %{high_priority: true}) |> Foeder.Ash.update()
+  # destroy: todo |> Ash.Changeset.for_destroy(:destroy) |> Foeder.Ash.destroy()
   code_interface do
-    define_for Foeder.Ash.Registry
+    define_for Foeder.Ash
 
     define :todo, args: [:text, :user_id]
     define :user_todos, args: [:user_id]
+    define :get_one, args: [:id, :user_id]
     define :done, args: []
     define :destroy, args: []
+    define :update
   end
 
   actions do
     # Add a set of simple actions. You'll customize these later.
     defaults [:create, :read, :update, :destroy]
+
+
+    read :get_one do
+      argument :id, :uuid do
+        allow_nil? false
+      end
+      argument :user_id, :integer do
+        allow_nil? false
+      end
+
+      filter expr(user_id == ^arg(:user_id) and id == ^arg(:id))
+    end
 
     read :user_todos do
       argument :user_id, :integer do

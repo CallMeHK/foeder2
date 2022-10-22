@@ -8,15 +8,25 @@ defmodule Foeder.Ash.User do
     repo Foeder.Ash.Repo
   end
 
-#  code_interface do
-#    define_for Foeder.Ash.Registry
-#
-#    define :get, args: [:id]
-#  end
+  code_interface do
+    define_for Foeder.Ash
+
+    define :read
+    define :by_id, args: [:id]
+  end
 
   actions do
     # Add a set of simple actions. You'll customize these later.
     defaults [:create, :read, :update, :destroy]
+
+
+    read :by_id do
+      argument :id, :integer do
+        allow_nil? false
+      end
+
+      filter expr(id == ^arg(:id))
+    end
   end
 
   # Attributes are the simple pieces of data that exist on your resource

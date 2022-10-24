@@ -27,6 +27,23 @@ defmodule Foeder.GraphQL.TodoTest do
       %{user1: user1, user2: user2}
     end
 
+    test "unauthenticated user cannot access todos", %{user1: user1} do
+      Todos.todo("test todo 1", user1.id)
+      
+      result = """
+      query {
+        todos {
+          id
+        }
+      }
+      """
+      |> Absinthe.run(FoederWeb.Schema, context: %{current_user: nil})
+      assert {:ok, %{
+        data: %{"todos" => nil},
+        errors: [%{message: "User must be authenticated"}]
+      }} = result
+    end
+
     test "can fetch todos", %{user1: user1, user2: user2} do
       Todos.todo("test todo 1", user1.id)
       Todos.todo("test todo 2", user2.id)

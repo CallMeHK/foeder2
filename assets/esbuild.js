@@ -4,7 +4,7 @@ const esbuild = require('esbuild')
 // require('fs').writeFileSync(require('path').join(process.cwd(),'derp'), 'asdf')
 // cp ./assets/css/app.css ./priv/static/assets/
 // cp ./assets/js/app.js ./priv/static/assets/
-// cp ./assets/css/phonix.css ./priv/static/assets/
+// cp ./assets/css/phoenix.css ./priv/static/assets/
 
 // Decide which mode to proceed with
 let mode = 'build'
@@ -18,7 +18,7 @@ process.argv.slice(2).forEach((arg) => {
 
 // Define esbuild options + extras for watch and deploy
 let opts = {
-  entryPoints: ['js/app.js', 'user-admin/bootstrap.tsx'],
+  entryPoints: ['js/app.js', 'user-admin/bootstrap.tsx', 'todos/bootstrap.tsx'],
   bundle: true,
   logLevel: 'info',
   target: 'es2016',

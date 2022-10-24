@@ -98,6 +98,12 @@ defmodule FoederWeb.Router do
     get "/", UserAdminController, :index
   end
 
+  scope "/todos", FoederWeb do
+    pipe_through [:spa, :require_authenticated_user]
+
+    get "/", TodosController, :index
+  end
+
   scope "/", FoederWeb do
     pipe_through [:browser, :redirect_if_user_is_authenticated]
 

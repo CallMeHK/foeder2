@@ -1,0 +1,8 @@
+.shared-container {
+	height: 100%;
+	display: flex;
+  justify-content: center;
+}
+.shared-inner-container {
+	height: 100%;
+}
